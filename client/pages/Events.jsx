@@ -13,8 +13,19 @@ export default function Events() {
           Events &amp; Association
         </h2>
 
-        <p className="leading-relaxed mb-6" style={{ fontFamily: 'Crimson Text, serif', fontSize: '1rem', color: '#432616' }}>
+        <h6 className="leading-relaxed mb-6" style={{ fontFamily: 'Crimson Text, serif', fontSize: '1rem', color: '#432616' }}>
           Stay up to date with events from the Italian-Canadian Archives Project and happenings in the community.
+        </h6>
+
+        <img
+          src="/group-photo.jpg"
+          alt="Italian-Canadian community gathering in London, Ontario"
+          style={{width: '70%', display: 'block', marginLeft: 'auto', marginRight: 'auto' }}/>
+
+        <p className="leading-relaxed mb-6" style={{ fontFamily: 'Crimson Text, serif', fontSize: '1rem', color: '#432616', display: 'block', textAlign: 'center' }}>
+          <b><i>Italian-Canadian Community Gathering. 2023.</i></b><br></br>
+          Italian Benevolent Society Outing, Held at Wonderland Springbank Park, August 1st, 19121
+          Photo Credits: The London Free Press Collection of Photographic Negatives, [1951-06-08], Archives and Special Collections, Western Libraries, Western University, London, Canada.
         </p>
 
         <div className="h-px mb-6" style={{ background: 'linear-gradient(to right, #c4943e, #432616, #c4943e)' }} />
