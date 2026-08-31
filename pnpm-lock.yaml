@@ -8,6 +8,7 @@ importers:
 
   .:
     dependencies:
+      "@emailjs/browser": "^4.4.1"
       dotenv:
         specifier: ^17.2.1
         version: 17.2.1
