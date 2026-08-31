@@ -1,7 +1,8 @@
-import { useState, useRef } from 'react';
+import { useState, useEffect, useRef } from "react";
 import PageLayout from '../components/PageLayout';
 
-const R = 'corriere-peligno/';
+const base = import.meta.env.BASE_URL;
+const R = `${base}corriere-peligno/`;
 
 const issues = {
   '1989': [
@@ -611,7 +612,7 @@ const issues = {
     },
     {
       label: 'March - April 2013',
-      pdf: 'corriere-peligno/CP_MarchApril_2013.pdf',
+      pdf: `${R}CP_MarchApril_2013.pdf`,
       metadata: {
         title: 'March - April 2013',
         subject: 'Corriere Peligno',
@@ -623,7 +624,7 @@ const issues = {
     },
     {
       label: 'May - June 2013',
-      pdf: 'corriere-peligno/CP_MayJune_2013.pdf',
+      pdf: `${R}CP_MayJune_2013.pdf`,
       metadata: {
         title: 'May - June 2013',
         subject: 'Corriere Peligno',
@@ -646,7 +647,7 @@ const issues = {
     },
     {
       label: 'September - October 2013',
-      pdf: 'corriere-peligno/CP_SepOct_2013.pdf',
+      pdf: `${R}CP_SepOct_2013.pdf`,
       metadata: {
         title: 'September - October 2013',
         subject: 'Corriere Peligno',
@@ -658,7 +659,7 @@ const issues = {
     },
     {
       label: 'November - December 2013',
-      pdf: 'corriere-peligno/CP_NovDec_2013.pdf',
+      pdf: `${R}CP_NovDec_2013.pdf`,
       metadata: {
         title: 'November - December 2013',
         type: 'Newspaper',
@@ -669,115 +670,325 @@ const issues = {
 };
 
 export default function CorreirePeligno() {
-  const base = import.meta.env.BASE_URL;
   const [viewing, setViewing] = useState(null);
   const viewerRef = useRef(null);
 
+  useEffect(() => {
+    if (viewing) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [viewing]);
+
   return (
-    <PageLayout activePage="CorreirePeligno" initialOpen={{ Media: true, LocalPub: true }}>
+  <PageLayout
+    activePage="CorreirePeligno"
+    initialOpen={{ Media: true, LocalPub: true }}
+  >
+    <div className="ornamental-border bg-[#f5f0e8] p-8">
 
-      <div className="ornamental-border bg-[#f5f0e8] p-8">
+      {/* Cover + info */}
+      <div className="flex flex-col sm:flex-row gap-8 mb-8">
+        <img
+          src={`${base}corriere-peligno.jpg`}
+          alt="Corriere Peligno cover"
+          className="shadow-lg flex-shrink-0 mx-auto sm:mx-0"
+          style={{ width: "200px", borderRadius: "2px" }}
+        />
 
-        {/* Cover + info */}
-        <div className="flex flex-col sm:flex-row gap-8 mb-8">
-          <img
-            src={`${base}corriere-peligno.jpg`}
-            alt="Corriere Peligno cover"
-            className="shadow-lg flex-shrink-0 mx-auto sm:mx-0"
-            style={{ width: '200px', borderRadius: '2px' }}
-          />
-          <div className="flex-1">
-            <h2 className="text-2xl font-bold mb-3" style={{ fontFamily: 'Playfair Display, serif', color: '#432616' }}>
-              Corriere Peligno
-            </h2>
-            <p className="mb-4 leading-relaxed" style={{ fontFamily: 'Crimson Text, serif', fontSize: '1rem', color: '#432616', fontStyle: 'italic' }}>
-              The Corriere Peligno is hosted by the Icap-London webpage, in fair dealing and with the purpose of preserving the stories and the voices of the Italian-Canadian community of London, thus contributing to documenting the history of Canada at large. It is posted with permission of it's director, Sestino Casasanta, legal heir.
+        <div className="flex-1">
+          <h2
+            className="text-2xl font-bold mb-3"
+            style={{
+              fontFamily: "Playfair Display, serif",
+              color: "#432616",
+            }}
+          >
+            Corriere Peligno
+          </h2>
+
+          <p
+            className="mb-4 leading-relaxed"
+            style={{
+              fontFamily: "Crimson Text, serif",
+              fontSize: "1rem",
+              color: "#432616",
+              fontStyle: "italic",
+            }}
+          >
+            The Corriere Peligno is hosted by the Icap-London webpage, in fair
+            dealing and with the purpose of preserving the stories and the
+            voices of the Italian-Canadian community of London, thus
+            contributing to documenting the history of Canada at large. It is
+            posted with permission of its director, Sestino Casasanta, legal
+            heir.
+          </p>
+
+          <p
+            className="mb-5 leading-relaxed"
+            style={{
+              fontFamily: "Crimson Text, serif",
+              fontSize: "1rem",
+              color: "#432616",
+              fontStyle: "italic",
+            }}
+          >
+            We have made all reasonable efforts to locate the holders of the
+            intellectual rights and to receive permission to make the Corriere
+            available through our site. Should you feel that your rights have
+            been infringed by any material, please contact us and we will remove
+            the content concerned.
+          </p>
+
+          <div
+            className="p-4"
+            style={{
+              border: "1px solid #bbaf9e",
+              borderRadius: "2px",
+              fontFamily: "Crimson Text, serif",
+              fontSize: "1rem",
+              color: "#432616",
+            }}
+          >
+            <p className="mb-1">
+              <strong>Publication Type:</strong> Local Periodical
             </p>
-            <p className="mb-5 leading-relaxed" style={{ fontFamily: 'Crimson Text, serif', fontSize: '1rem', color: '#432616', fontStyle: 'italic' }}>
-              We have made all reasonable efforts to locate the holders of the intellectual rights and to receive permission to make the Corriere available through our site. Should you feel that your rights have been infringed by any material, please contact us and we will remove the content concerned.
+
+            <p className="mb-1">
+              <strong>Language:</strong> Italian / English
             </p>
-            <div className="p-4" style={{ border: '1px solid #bbaf9e', borderRadius: '2px', fontFamily: 'Crimson Text, serif', fontSize: '1rem', color: '#432616' }}>
-              <p className="mb-1"><strong>Publication Type:</strong> Local Periodical</p>
-              <p className="mb-1"><strong>Language:</strong> Italian / English</p>
-              <p><strong>Years Available:</strong> 1989 – 2013 (selected issues)</p>
-            </div>
+
+            <p>
+              <strong>Years Available:</strong> 1989 – 2013 (selected issues)
+            </p>
           </div>
         </div>
-
-        <div className="h-px mb-6" style={{ background: 'linear-gradient(to right, transparent, #c4943e, transparent)' }} />
-
-        {/* Available Issues */}
-        <h3 className="text-2xl font-bold mb-4" style={{ fontFamily: 'Playfair Display, serif', color: '#432616' }}>
-          Available Issues
-        </h3>
-
-        <div className="flex flex-wrap gap-4 items-start">
-          {Object.entries(issues).map(([year, items]) => {
-            const activeIssue = items.find(i => i.label === viewing?.label) || null;
-            return (
-              <div
-                key={year}
-                className={`p-4 ${activeIssue ? 'w-full' : 'w-[180px]'}`}
-                style={{ border: '1px solid #bbaf9e', borderRadius: '2px', backgroundColor: 'rgba(255,255,255,0.3)' }}
-              >
-                <p className="font-bold mb-3" style={{ fontFamily: 'Playfair Display, serif', fontSize: '1rem', color: '#432616' }}>
-                  {year}
-                </p>
-                <ul className="space-y-2">
-                  {items.map((issue) => (
-                    <li key={issue.label}>
-                      {issue.pdf ? (
-                        <button
-                          onClick={() => setViewing(viewing?.label === issue.label ? null : issue)}
-                          className="underline hover:opacity-75 transition text-left"
-                          style={{ fontFamily: 'Crimson Text, serif', fontSize: '0.95rem', color: '#432616' }}
-                        >
-                          › {issue.label}
-                        </button>
-                      ) : (
-                        <span style={{ fontFamily: 'Crimson Text, serif', fontSize: '0.95rem', color: '#432616' }}>
-                          › {issue.label}
-                        </span>
-                      )}
-                    </li>
-                  ))}
-                </ul>
-
-                {activeIssue && (
-                  <div className="mt-4" ref={viewerRef}>
-                    <div className="flex items-center justify-between mb-3">
-                      <p className="font-bold" style={{ fontFamily: 'Playfair Display, serif', color: '#432616' }}>{activeIssue.label}</p>
-                      <button onClick={() => setViewing(null)} className="text-sm underline hover:opacity-75" style={{ fontFamily: 'Crimson Text, serif', color: '#432616' }}>Close</button>
-                    </div>
-                    <iframe
-                      src={`${base}${activeIssue.pdf}`}
-                      title={activeIssue.label}
-                      className="w-full shadow-md mb-4"
-                      style={{ borderRadius: '2px', height: '900px', border: 'none' }}
-                    />
-                    {activeIssue.metadata && (
-                      <div className="p-4" style={{ border: '1px solid #bbaf9e', borderRadius: '2px', fontFamily: 'Crimson Text, serif', fontSize: '0.95rem', color: '#432616' }}>
-                        <p className="font-bold mb-2" style={{ fontFamily: 'Playfair Display, serif' }}>Dublin Core Metadata</p>
-                        <p className="mb-1"><strong>Title:</strong> {activeIssue.metadata.title}</p>
-                        {activeIssue.metadata.subject && <p className="mb-1"><strong>Subject:</strong> {activeIssue.metadata.subject}</p>}
-                        {activeIssue.metadata.creator && <p className="mb-1"><strong>Creator:</strong> {activeIssue.metadata.creator}</p>}
-                        {activeIssue.metadata.language && <p className="mb-1"><strong>Language:</strong> {activeIssue.metadata.language}</p>}
-                        <p className="mb-1"><strong>Type:</strong> {activeIssue.metadata.type}</p>
-                        <p className="mb-1"><strong>Collection:</strong> {activeIssue.metadata.collection}</p>
-                        {activeIssue.metadata.citation && (
-                          <p><strong>Citation:</strong> <a href={activeIssue.metadata.citation} target="_blank" rel="noopener noreferrer" className="underline hover:opacity-75" style={{ color: '#2c6e8a' }}>{activeIssue.metadata.citation}</a></p>
-                        )}
-                      </div>
-                    )}
-                  </div>
-                )}
-              </div>
-            );
-          })}
-        </div>
-
       </div>
 
-    </PageLayout>
-  );
+      <div
+        className="h-px mb-6"
+        style={{
+          background:
+            "linear-gradient(to right, transparent, #c4943e, transparent)",
+        }}
+      />
+
+      {/* Available Issues */}
+      <h3
+        className="text-2xl font-bold mb-4"
+        style={{
+          fontFamily: "Playfair Display, serif",
+          color: "#432616",
+        }}
+      >
+        Available Issues
+      </h3>
+
+      <div className="flex flex-wrap gap-4 items-start">
+        {Object.entries(issues).map(([year, items]) => (
+          <div
+            key={year}
+            className="p-4 min-w-[180px]"
+            style={{
+              border: "1px solid #bbaf9e",
+              borderRadius: "2px",
+              backgroundColor: "rgba(255,255,255,0.3)",
+            }}
+          >
+            <p
+              className="font-bold mb-3"
+              style={{
+                fontFamily: "Playfair Display, serif",
+                fontSize: "1rem",
+                color: "#432616",
+              }}
+            >
+              {year}
+            </p>
+
+            <ul className="space-y-2">
+              {items.map((issue) => (
+                <li key={issue.label}>
+                  {issue.pdf ? (
+                    <button
+                      onClick={() => setViewing(issue)}
+                      className="underline hover:opacity-75 transition text-left"
+                      style={{
+                        fontFamily: "Crimson Text, serif",
+                        fontSize: "0.95rem",
+                        color: "#432616",
+                      }}
+                    >
+                      › {issue.label}
+                    </button>
+                  ) : (
+                    <span
+                      style={{
+                        fontFamily: "Crimson Text, serif",
+                        fontSize: "0.95rem",
+                        color: "#432616",
+                      }}
+                    >
+                      › {issue.label}
+                    </span>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+
+      {/* PDF + METADATA POPUP */}
+      {viewing && (
+        <div
+          className="fixed inset-0 flex items-center justify-center"
+          style={{
+            background: "rgba(0, 0, 0, 0.85)",
+            zIndex: 9999,
+            padding: "40px",
+          }}
+          onClick={() => setViewing(null)}
+        >
+          <div
+            style={{
+              width: "96%",
+              height: "90vh",
+              overflowY: "auto",
+              position: "relative",
+            }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              onClick={() => setViewing(null)}
+              aria-label="Close PDF"
+              className="absolute border-none bg-transparent cursor-pointer"
+              style={{
+                top: "10px",
+                right: "20px",
+                color: "white",
+                fontSize: "45px",
+                lineHeight: 1,
+                zIndex: 1,
+              }}
+            >
+              ×
+            </button>
+
+            {/* PDF */}
+            <div
+              style={{
+                width: "90%",
+                margin: "0 auto",
+                padding: "25px",
+              }}
+            >
+              <h2
+                className="font-bold mb-4"
+                style={{
+                  fontFamily: "Playfair Display, serif",
+                  color: "white",
+                  fontSize: "1.5rem",
+                  paddingRight: "40px",
+                }}
+              >
+                {viewing.label}
+              </h2>
+
+              <iframe
+                src={viewing.pdf}
+                title={viewing.label}
+                className="w-full shadow-md mb-6"
+                style={{
+                  height: "100vh",
+                  border: "none",
+                  background: "white",
+                  borderRadius: "2px",
+                }}
+              />
+            </div>
+
+            {/* Metadata */}
+            {viewing.metadata && (
+              <div
+                className="p-4"
+                style={{
+                  backgroundColor: "#bbaf9ee0",
+                  border: "1px solid #bbaf9e",
+                  borderRadius: "2px",
+                  width: "85%",
+                  margin: "0 auto 30px auto",
+                  fontFamily: "Crimson Text, serif",
+                  fontSize: "0.95rem",
+                  color: "#432616",
+                }}
+              >
+                <p
+                  className="font-bold mb-2"
+                  style={{ fontFamily: "Playfair Display, serif" }}
+                >
+                  Dublin Core Metadata
+                </p>
+
+                <p className="mb-1">
+                  <strong>Title:</strong> {viewing.metadata.title}
+                </p>
+
+                {viewing.metadata.creator && (
+                  <p className="mb-1">
+                    <strong>Creator:</strong> {viewing.metadata.creator}
+                  </p>
+                )}
+
+                {viewing.metadata.subject && (
+                  <p className="mb-1">
+                    <strong>Subject:</strong> {viewing.metadata.subject}
+                  </p>
+                )}
+
+                {viewing.metadata.language && (
+                  <p className="mb-1">
+                    <strong>Language:</strong> {viewing.metadata.language}
+                  </p>
+                )}
+
+                {viewing.metadata.type && (
+                  <p className="mb-1">
+                    <strong>Type:</strong> {viewing.metadata.type}
+                  </p>
+                )}
+
+                {viewing.metadata.collection && (
+                  <p className="mb-1">
+                    <strong>Collection:</strong> {viewing.metadata.collection}
+                  </p>
+                )}
+
+                {viewing.metadata.citation && (
+                  <p>
+                    <strong>Citation:</strong>{" "}
+                    <a
+                      href={viewing.metadata.citation}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="underline hover:opacity-75"
+                      style={{ color: "#2c6e8a" }}
+                    >
+                      {viewing.metadata.citation}
+                    </a>
+                  </p>
+                )}
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+    </div>
+  </PageLayout>
+);
 }

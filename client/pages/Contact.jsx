@@ -1,17 +1,54 @@
 import { useState } from 'react';
+import emailjs from '@emailjs/browser';
 import Sidebar from '../components/Sidebar';
 
 export default function Contact() {
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: '',
+  });
+
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setSubmitted(true);
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
   };
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      await emailjs.send(
+        'service_bxn0lxq',
+        'template_6l0vhoc',
+        {
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+        },
+        {
+          publicKey: 'OepqKAvpfTQjAln56',
+        }
+      );
+
+      setSubmitted(true);
+
+      setFormData({
+        name: '',
+        email: '',
+        message: '',
+      });
+    }catch (error) {
+      console.error('EmailJS error:', error);
+
+      alert(
+        `Email failed: ${error?.text || error?.message || JSON.stringify(error)}`
+      );
+    }
   };
 
   return (

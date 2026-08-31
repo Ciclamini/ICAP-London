@@ -174,10 +174,14 @@ export default function Sidebar({ activePage, initialOpen = {} }) {
           </NavBtn>
 
           <NavBtn label="Events and Association" expandable expanded={open.Events} highlight={activePage === 'Events'}
-            onClick={() => { toggle('Events'); navigate('/events'); }}>
-            <NavBtn label="ICAP Events" indent={1} expandable expanded={open.ICAPEvents} onClick={() => toggle('ICAPEvents')}>
-              {['Events in London', 'Events in Canada'].map((p) => (
-                <NavBtn key={p} label={p} indent={2} onClick={() => navigate('/events')} />
+            onClick={() => { toggle('Events'); }}>
+            <NavBtn label="ICAP Events" indent={1} expandable expanded={open.ICAPEvents} highlight={activePage === 'ICAPEvents'} 
+            onClick={() => toggle('ICAPEvents')}>
+              {[
+                { label: 'Events in London', route: '/events/ICAPEvents/London-Events', page: 'LondonEvents' },
+                { label: 'Events in Canada', externalUrl: 'https://icap.ca/news/', page: 'CanadaEvents' }
+              ].map((p) => (
+                      <NavBtn key={p.label} label={p.label} indent={2} highlight={activePage === p.page} onClick={() => p.externalUrl ? window.open(p.externalUrl, '_blank') : navigate(p.route)} />
               ))}
             </NavBtn>
             <NavBtn label="Associations" indent={1} onClick={() => navigate('/events')} />

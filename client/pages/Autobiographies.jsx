@@ -9,8 +9,7 @@ const entries = [
     subtitle: 'A Short Autobiography',
     description: 'Professor Emeritus with Western University (London, Ontario), IEEE Life Member, Sponsor of the Martin Gerardus Strybosch Awards.',
     linkLabel: 'Irene Gargantini Strybosch · ICAP LONDON',
-    href: null,
-    pdf: 'irene_gargantini_autobiography.pdf',
+    href: 'https://www.csd.uwo.ca/about/history/the_irene_years.html',
   },
   {
     id: 'damjana-bratuz',
@@ -61,24 +60,7 @@ export default function Autobiographies() {
                 <p className="mb-4 leading-relaxed" style={{ fontFamily: 'Crimson Text, serif', fontSize: '1rem', color: '#432616' }}>
                   {entry.description}
                 </p>
-                {entry.pdf && (
-                  <button
-                    onClick={() => setViewing(viewing === entry.id ? null : entry.id)}
-                    className="underline hover:opacity-75 transition text-left block mb-3"
-                    style={{ fontFamily: 'Crimson Text, serif', fontSize: '0.95rem', color: '#432616' }}
-                  >
-                    {viewing === entry.id ? 'Close document ↑' : '› Read autobiography'}
-                  </button>
-                )}
-                {viewing === entry.id && entry.pdf && (
-                  <iframe
-                    src={`${base}${entry.pdf}`}
-                    title={entry.name}
-                    className="w-full shadow-md mb-3"
-                    style={{ height: '900px', border: '1px solid #bbaf9e', borderRadius: '2px', display: 'block' }}
-                  />
-                )}
-                {entry.href ? (
+                {entry.href && (
                   <a
                     href={entry.href}
                     target="_blank"
@@ -88,10 +70,6 @@ export default function Autobiographies() {
                   >
                     › {entry.linkLabel}
                   </a>
-                ) : !entry.pdf && (
-                  <span style={{ fontFamily: 'Crimson Text, serif', fontSize: '0.95rem', color: '#bbaf9e' }}>
-                    › {entry.linkLabel}
-                  </span>
                 )}
               </div>
               {i < entries.length - 1 && (

@@ -36,7 +36,7 @@ export default function Documentary() {
 
           <div className="w-full shadow-md" style={{ position: 'relative', paddingBottom: '56.25%', height: 0, borderRadius: '2px', overflow: 'hidden' }}>
             <iframe
-              src="https://www.youtube.com/embed/tUJ4mGtJrWU"
+              src="https://www.youtube.com/embed/tUJ4mGtJrWU"              
               title="In Our Own Words"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen

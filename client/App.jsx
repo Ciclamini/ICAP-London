@@ -22,6 +22,7 @@ import Beginnings from "./pages/Beginnings";
 import Contributions from "./pages/Contributions";
 import ReligiousLife from "./pages/ReligiousLife";
 import Events from "./pages/Events";
+import LondonEvents from "./pages/LondonEvents";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -52,6 +53,7 @@ export default function App() {
             <Route path="/people-and-their-stories/history/contributions" element={<Contributions />} />
             <Route path="/people-and-their-stories/religious-life" element={<ReligiousLife />} />
             <Route path="/events" element={<Events />} />
+            <Route path="/events/ICAPEvents/London-Events" element={<LondonEvents />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

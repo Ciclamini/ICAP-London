@@ -32,29 +32,7 @@ export default function Events() {
 
         <div className="space-y-0">
 
-          {/* Events in London */}
-          <div className="py-6">
-            <h3 className="font-bold mb-2" style={{ fontFamily: 'Playfair Display, serif', fontSize: '1.25rem', color: '#432616' }}>
-              Events in London
-            </h3>
-            <p className="leading-relaxed" style={{ fontFamily: 'Crimson Text, serif', fontSize: '1rem', color: '#432616' }}>
-              Content coming soon. Check back for upcoming Italian-Canadian events in the London area.
-            </p>
-          </div>
-
-          <Divider />
-
-          {/* Events in Canada */}
-          <div className="py-6">
-            <h3 className="font-bold mb-2" style={{ fontFamily: 'Playfair Display, serif', fontSize: '1.25rem', color: '#432616' }}>
-              Events in Canada
-            </h3>
-            <p className="leading-relaxed" style={{ fontFamily: 'Crimson Text, serif', fontSize: '1rem', color: '#432616' }}>
-              Content coming soon. Check back for upcoming Italian-Canadian events across Canada.
-            </p>
-          </div>
-
-          <Divider />
+        
 
           {/* Associations */}
           <div className="py-6">

@@ -85,7 +85,7 @@ export default function Index() {
               </p>
               <div className="h-px my-4" style={{ background: 'linear-gradient(to right, transparent, #c4943e, transparent)' }} />
               <p className="leading-relaxed" style={{ fontFamily: 'Crimson Text, serif', fontSize: '1rem', color: '#432616' }}>
-                ICAP London is working in partnership with the <a href="https://www.google.com/search?q=Italian-Canadian+Archives+Project.&rlz=1C5CHFA_enCA852CA852&oq=Italian-Canadian+Archives+Project.&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIICAEQABgWGB4yCAgCEAAYFhgeMgcIAxAAGO8FMgcIBBAAGO8FMgcIBRAAGO8FMgcIBhAAGO8F0gEHMTMyajBqN6gCALACAA&sourceid=chrome&ie=UTF-8" target="_blank" rel="noopener noreferrer" className="underline font-semibold transition hover:opacity-75" style={{ fontFamily: 'Crimson Text, serif', fontSize: '1rem', color: '#2c6e8a' }}>Italian-Canadian Archives Project</a>.
+                ICAP London is working in partnership with the <a href="https://icap.ca/" target="_blank" rel="noopener noreferrer" className="underline font-semibold transition hover:opacity-75" style={{ fontFamily: 'Crimson Text, serif', fontSize: '1rem', color: '#2c6e8a' }}>Italian-Canadian Archives Project</a>.
               </p>
             </div>
 
